@@ -28,13 +28,12 @@ const insertFirstItem=(btn)=>{
 
 const insertRepeatedItem=(isRepeated,btn)=>{
   cart.forEach(item=>{
-        if(item.id===btn.id){
-          item.counter=item.counter+1;
-          isRepeated.status=true;
-          showCounter();
-          return isRepeated
-   
-        }
+      if(item.id===btn.id){
+        item.counter=item.counter+1;
+        isRepeated.status=true;
+        showCounter();
+        return isRepeated  
+      }
   })
 }
 
@@ -47,17 +46,22 @@ const insertNewItem =(isRepeated, btn)=>{
 
 const countItems=()=>{
   let itemsCounter=0;
-  cart.forEach(item=>{
-    itemsCounter=itemsCounter+item.counter
-  })
+  cart.forEach(item=>{itemsCounter=itemsCounter+item.counter});
   return itemsCounter;
 }
 
 const showCounter=()=>{
   counter.innerHTML="";
   counter.innerHTML=countItems()
+  showMessage
 }
 
 const showMessage = () => {
-    
+      const msg = document.querySelector('#msg');
+      msg.classList.remove('hidden');
+      msg.classList.add('visible');
+      setTimeout(()=>{
+        msg.classList.remove('visible');
+        msg.classList.add('hidden');
+      },1000)
 }

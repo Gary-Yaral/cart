@@ -1,4 +1,4 @@
-const name =[
+const object =[
     {
         category:'Gaseosas',
         items: [
@@ -80,50 +80,59 @@ const name =[
         ]
     },
 ];
-const parentNode = document.querySelector('#container');
+
+
+const container = document.querySelector('#container');
 window.addEventListener('DOMContentLoaded', () => {
-    const section = new Section();
-    section.new(name,parentNode)
+    new Section(object,container).new();
 })
 
 /* Object section*/
 class Section{
-    new(object, parentNode){ 
-        parentNode.classList.add('section')
-        object.forEach(element => {
-            const section = document.createElement('div');
-            section.setAttribute('id','section_'+element.category)
-            const title = document.createElement('div');
-            title.classList.add('title');
-            const items = document.createElement('div');
-            items.classList.add('items')
-            const line = document.createElement('hr');
-            const category = document.createElement('div');
-            category.innerHTML = element.category;
-            line.classList.add('underline');
-            title.appendChild(category);
-            title.appendChild(line);
-            
-            element.items.forEach(item => {
-                const itemCard = document.createElement('div');
-                const img = document.createElement('img');
-                const btn = document.createElement('div');
-                btn.classList.add('btn');
-                btn.innerHTML = 'Añadir'
-                img.src = item.src;
-                itemCard.classList.add('item');
-                itemCard.setAttribute('id',item.id);
-                itemCard.appendChild(img);
-                itemCard.appendChild(btn)
-                items.appendChild(itemCard);
-            })
-            section.appendChild(title)
-            section.appendChild(items)    
-            parentNode.appendChild(section);
+    constructor(object, container){
+        this.object = object
+        this.container =container
+        this.container.classList.add('section')
+    }
+    new(){ 
+        
+        this.object.forEach(block => {
+            const sectionContainer = document.createElement('div');
+            sectionContainer.setAttribute('id','section_'+block.category)
+            const sectionTitleContainer = document.createElement('div');
+            sectionTitleContainer.classList.add('title');
+            const itemsContainer = document.createElement('div');
+            itemsContainer.classList.add('items')
+            const sectionTitle = document.createElement('div');
+            sectionTitle.innerHTML = block.category;
+            const underline = document.createElement('hr');   
+            underline.classList.add('underline');
+            sectionTitleContainer.appendChild(sectionTitle);
+            sectionTitleContainer.appendChild(underline);
+            this.generateItems(block, itemsContainer)
+            this.insertSectionInContainer(sectionContainer, sectionTitleContainer, itemsContainer)
         });
     }
-}
 
+    generateItems (block, itemsContainer){
+        block.items.forEach(item => {
+            const itemCard = document.createElement('div');
+            const img = document.createElement('img');
+            const btn = document.createElement('div');
+            btn.classList.add('btn');
+            btn.innerHTML = 'Añadir'
+            img.src = item.src;
+            itemCard.classList.add('item');
+            itemCard.setAttribute('id',item.id);
+            itemCard.appendChild(img);
+            itemCard.appendChild(btn)
+            itemsContainer.appendChild(itemCard);
+        })
+    }
 
-const generateSections = () => {
+    insertSectionInContainer(sectionContainer, sectionTitleContainer, itemsContainer){
+        sectionContainer.appendChild(sectionTitleContainer)
+        sectionContainer.appendChild(itemsContainer)    
+        this.container.appendChild(sectionContainer);
+    }
 }
