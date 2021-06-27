@@ -6,22 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/counter.css">
     <link rel="stylesheet" href="font/flaticon.css">
+    <link rel="stylesheet" href="css/hamburguer.css">
     <link rel="shortcut icon" href="flaticon/" type="image/x-icon">
     <title>Cart || E-commerce</title>
 </head>
 <body>
     <nav>
+        <div id="toogle"class="hamburguer">
+            <div id="bar"class="bar"></div>
+        </div>
         <div class="business">Mi Tienda</div>
         <div class="cart">
                 <label id="msg" class="msg hidden">Producto agregado</label>
                 <i class="flaticon-shopping-cart icon"></i>
                 <div id="counter" class="counter">0</div>
-        </div>
-        
+        </div>      
     </nav>
     <div id="container"></div>
     <footer>Powered by &copy Gary Yaral</footer>
     <script src="js/selected-counter.js"></script>
     <script src="js/items-generator.js"></script>
+    <script src="js/hamburguer-btn.js"></script>
 </body>
 </html>

@@ -63,5 +63,5 @@ const showMessage = () => {
       setTimeout(()=>{
         msg.classList.remove('visible');
         msg.classList.add('hidden');
-      },1000)
+      },200)
 }
