@@ -21,7 +21,7 @@ const object =[
                 src: 'assets/inca_cola.jpg'
             },
             {
-                id:5,
+                id:4,
                 name: 'Fanta',
                 price: 2.50,
                 src: 'assets/fanta_cola.jpg'
@@ -82,11 +82,16 @@ const object =[
 ];
 
 
+
 const container = document.querySelector('#container');
 window.addEventListener('DOMContentLoaded', () => {
     new Section(object,container).new();
+    createSession();
 })
 
+window.onchange = () =>{
+    alert('reay')
+}
 /* Object section*/
 class Section{
     constructor(object, container){
@@ -136,3 +141,37 @@ class Section{
         this.container.appendChild(sectionContainer);
     }
 }
+
+const createSession = () => {
+    const cart = [];
+    if(localStorage.getItem('cart')){
+        const exists = {status: true}
+        const session = JSON.parse(localStorage.getItem('cart'));
+        startCounter(exists, session);
+    }else{
+        localStorage.setItem('cart', JSON.stringify(cart));
+        const session = JSON.parse(localStorage.getItem('cart'));
+        const exists = {status: false}
+        startCounter(exists,session);
+    }
+}
+
+const countItemsStorage=(exists, session)=>{
+    let itemsCounter=0;
+    if(exists.status === false){
+        itemsCounter = 0;
+        return itemsCounter;
+    }else{
+        session.forEach(item=>{itemsCounter=itemsCounter+item.counter});
+        return itemsCounter;
+    }
+
+    
+  }
+  
+  const startCounter=(exists,session)=>{
+    const counter = document.querySelector('#counter');
+    counter.innerHTML="";
+    counter.innerHTML=countItemsStorage(exists,session)
+  }
+  

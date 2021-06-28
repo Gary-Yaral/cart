@@ -1,59 +1,67 @@
 const body =document.querySelector('body');
-const cart = [];
+const storageName = 'cart';
 const counter = document.querySelector('#counter');
 
 
 body.onclick=(e)=>{ 
-  const btn = e.target;
-  if(btn.classList.contains('btn')){
-    if(cart == false){
-       insertFirstItem(btn);
-    }else{
-      let isRepeated={status:false};
-      insertRepeatedItem(isRepeated,btn);
-      insertNewItem(isRepeated,btn);     
-    } 
-    showMessage()
+  if(localStorage.getItem(storageName)){
+    const session =JSON.parse(localStorage.getItem(storageName)); ;
+    const btn = e.target;
+    if(btn.classList.contains('btn')){
+      if(session == false){
+        insertFirstItem(btn,session);
+      }else{
+        let isRepeated={status:false};
+        insertRepeatedItem(isRepeated,btn, session);
+        insertNewItem(isRepeated,btn,session);     
+      } 
+      showMessage()
+    }  
+  }else{
+    console.error('')
+    window.location = '';
   }
 }
 
-const insertFirstItem=(btn)=>{
+const insertFirstItem=(btn,session)=>{
   const item = {
-    id:btn.id,
+    id:btn.parentNode.id,
     counter: 1
   }
-  cart.push(item)
-  showCounter()
+  session.push(item);
+  localStorage.setItem(storageName,JSON.stringify(session));
+  showCounter(session)
 }
 
-const insertRepeatedItem=(isRepeated,btn)=>{
-  cart.forEach(item=>{
-      if(item.id===btn.id){
+const insertRepeatedItem=(isRepeated,btn,session)=>{
+  session.forEach(item=>{
+      if(item.id === btn.parentNode.id){
         item.counter=item.counter+1;
         isRepeated.status=true;
-        showCounter();
+        localStorage.setItem(storageName,JSON.stringify(session));
+        showCounter(session);
         return isRepeated  
       }
   })
 }
 
-const insertNewItem =(isRepeated, btn)=>{
-  if(isRepeated.status===false){
-    insertFirstItem(btn)
-    showCounter()
+const insertNewItem =(isRepeated, btn, session)=>{
+  if(isRepeated.status === false){
+    insertFirstItem(btn,session)
+    showCounter(session)
   }
 }
 
-const countItems=()=>{
+const countItems=(session)=>{
   let itemsCounter=0;
-  cart.forEach(item=>{itemsCounter=itemsCounter+item.counter});
+  session.forEach(item=>{itemsCounter=itemsCounter+item.counter});
   return itemsCounter;
 }
 
-const showCounter=()=>{
+const showCounter=(session)=>{
   counter.innerHTML="";
-  counter.innerHTML=countItems()
-  showMessage
+  counter.innerHTML=countItems(session)
+  showMessage()
 }
 
 const showMessage = () => {

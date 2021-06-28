@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/counter.css">
     <link rel="stylesheet" href="font/flaticon.css">
     <link rel="stylesheet" href="css/hamburguer.css">
+    <link rel="stylesheet" href="css/cart-modal.css">
     <link rel="shortcut icon" href="flaticon/" type="image/x-icon">
     <title>Cart || E-commerce</title>
 </head>
@@ -16,7 +17,7 @@
             <div id="bar"class="bar"></div>
         </div>
         <div class="business">Mi Tienda</div>
-        <div class="cart">
+        <div class="cart" id="cart">
                 <label id="msg" class="msg hidden">Producto agregado</label>
                 <i class="flaticon-shopping-cart icon"></i>
                 <div id="counter" class="counter">0</div>
@@ -24,8 +25,34 @@
     </nav>
     <div id="container"></div>
     <footer>Powered by &copy Gary Yaral</footer>
+    <div id="cart-modal" class="cart-modal modal-hidden">
+        <div class="modal-navbar">
+            <div>Carrito</div>
+        </div>
+        <div class="cart-container" id="cart-container">
+            <div class="cart-render">
+                <div class="card-selected">
+                    <div class="btn-delete">X</div>  
+                    <div class="block">
+                        <img src="assets/coca_cola.jpg" alt="">
+                        <div class="cart-data">
+                            <div class="cart-title">Coca cola 1L retornable</div>
+                            <div class="cart-price">$5.67</div>
+                            <div class="cart-btn">
+                                <div>-</div>     
+                                <label contenteditable= 'true'>999</label>
+                                <div>+</div>
+                            </div>
+                        </div>
+                    </div>
+                                             
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="js/selected-counter.js"></script>
     <script src="js/items-generator.js"></script>
     <script src="js/hamburguer-btn.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>
