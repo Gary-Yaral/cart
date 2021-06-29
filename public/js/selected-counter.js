@@ -26,6 +26,7 @@ body.onclick=(e)=>{
   addOneItem(e);
   substractOneItem(e)
   removeItem(e);
+  removeAll(e)
 }
 
 const insertFirstItem=(btn,session)=>{

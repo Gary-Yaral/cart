@@ -5,25 +5,25 @@ const object =[
             {
                 id:1,
                 name: 'Coca Cola',
-                price: 2.50,
+                price: 0.50,
                 src: 'assets/coca_cola.jpg'
             },
             {
                 id:2,
                 name: 'Pepsi',
-                price: 2.50,
+                price: 0.60,
                 src: 'assets/pepsi_cola.webp'
             },
             {
                 id:3,
                 name: 'Inca Cola',
-                price: 2.50,
+                price: 0.50,
                 src: 'assets/inca_cola.jpg'
             },
             {
                 id:4,
                 name: 'Fanta',
-                price: 2.50,
+                price: 0.55,
                 src: 'assets/fanta_cola.jpg'
             }
         ]
@@ -34,7 +34,7 @@ const object =[
             {
                 id:5,
                 name: 'Ron Fiesta',
-                price: 5.50,
+                price: 5.00,
                 src: 'assets/ron_barcelo.jpg'
             },
             {
@@ -46,13 +46,13 @@ const object =[
             {
                 id:7,
                 name: 'Ron',
-                price: 5.50,
+                price: 4.50,
                 src:'assets/ron_cartavio.jpg'
             },
             {
                 id:8,
                 name: 'Cerveza en lata',
-                price: 5.50,
+                price: 1.35,
                 src:'assets/cerveza_lata.jpg'
             }
         ]
@@ -63,18 +63,18 @@ const object =[
             {
                 id:9,
                 name: 'Zuck',
-                price: 5.50,
+                price: 0.40,
                 src: 'assets/suck.jpg'
             },
             {
                 id:10,
                 name: 'Avena 1kg',
-                price: 5.50,
+                price: 0.80,
                 src:'assets/avena.jpg'
             },{
                 id:11,
                 name: 'Arroz 1kg',
-                price: 5.50,
+                price: 0.70,
                 src:'assets/arroz.jpg'
             }
         ]
@@ -89,9 +89,6 @@ window.addEventListener('DOMContentLoaded', () => {
     createSession();
 })
 
-window.onchange = () =>{
-    alert('reay')
-}
 /* Object section*/
 class Section{
     constructor(object, container){

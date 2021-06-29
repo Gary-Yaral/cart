@@ -2,6 +2,7 @@ const cartBtn = document.querySelector('#cart');
 const cartModal = document.querySelector('#cart-modal');
 const cartContainer = document.querySelector('#cart-render')
 const buttonsContainer = document.querySelector('#cart-btn-container');
+const totalContainer = document.querySelector('#cart-total');
 
 
 cartBtn.addEventListener('click', () => {
@@ -10,19 +11,22 @@ cartBtn.addEventListener('click', () => {
 })
 
 const renderCart = () => {
-    new Cart(cartContainer,buttonsContainer).new()  
+    new Cart(cartContainer,buttonsContainer,totalContainer).new()  
 } 
 
 class Cart {
-    constructor(cartContainer, buttonsContainer){
+    constructor(cartContainer, buttonsContainer, totalContainer){
         this.container = cartContainer;
-        this.buttonsContainer = buttonsContainer
+        this.buttonsContainer = buttonsContainer;
+        this.totalContainer = totalContainer
+        this.total = 0;
     }
 
     new(){
         const data = JSON.parse(localStorage.getItem('cart'));
         if(data.length === 0){
             this.container.innerHTML ='<label>No hay productos en su carrito</label>';
+            this.totalContainer.classList.add('cart-total-hidden');
         }else{
             this.container.innerHTML = "";
             data.forEach(element => {
@@ -31,6 +35,7 @@ class Cart {
                     section.items.forEach(item => {
                         if(parseFloat(element.id) === item.id){
                             items.push(item);
+                            this.total = this.total + (element.counter * item.price);
                         }
                     })
                 })
@@ -43,7 +48,7 @@ class Cart {
                         <img src="`+items[0].src+`" alt="">
                         <div class="cart-data">
                             <div class="cart-title">`+items[0].name+`</div>
-                            <div class="cart-price">$`+items[0].price+`</div>
+                            <div class="cart-price">$`+items[0].price.toFixed(2)+`</div>
                             <div class="cart-btn">
                                 <div class="btn-minus">-</div>     
                                 <input type="number" align="center" value="`+element.counter+`"/>
@@ -55,7 +60,8 @@ class Cart {
                 ` 
             this.container.innerHTML = this.container.innerHTML + card;
             })
-            this.addButtons()
+            this.addTotal();
+            this.addButtons();
         }
     }
 
@@ -64,6 +70,13 @@ class Cart {
         buttonsContainer.innerHTML= `
             <div class="btn-clear">Vaciar</div>
             <div class="btn-next">Pedir</div>`;
+    }
+    addTotal(){ 
+        const totalContainer = this.totalContainer;
+        totalContainer.innerHTML = `
+            <label class="total-title">Total:</label>
+            <label id="total" class="total">$`+this.total.toFixed(2)+`</label>`;
+        totalContainer.classList.remove('cart-total-hidden');
     }
 }
 
@@ -136,10 +149,23 @@ const removeItem = (e) => {
 
 }
 
-  
-  const updateCounter=(session)=>{
+const updateCounter=(session)=>{
     counter.innerHTML="";
     counter.innerHTML=countItems(session)
 
-  }
+}
+
+
+const removeAll = (e) => {
+    const btn = e.target;   
+    if(btn.classList.contains('btn-clear')){
+        const cart = [];
+        localStorage.setItem('cart', JSON.stringify(cart));
+        const session = JSON.parse(localStorage.getItem('cart'));
+        updateCounter(session)
+        renderCart()
+        buttonsContainer.innerHTML = "";
+        totalContainer.innerHTML ="";                    
+    }
+}
   
