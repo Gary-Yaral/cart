@@ -13,14 +13,19 @@ body.onclick=(e)=>{
       }else{
         let isRepeated={status:false};
         insertRepeatedItem(isRepeated,btn, session);
-        insertNewItem(isRepeated,btn,session);     
+        insertNewItem(isRepeated,btn,session);
+
       } 
+      renderCart();
       showMessage()
     }  
   }else{
     console.error('')
     window.location = '';
   }
+  addOneItem(e);
+  substractOneItem(e)
+  removeItem(e);
 }
 
 const insertFirstItem=(btn,session)=>{

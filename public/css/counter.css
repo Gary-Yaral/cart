@@ -8,6 +8,7 @@
   --white:rgb(253, 253, 253);
   --shadow:rgb(177, 169, 177);
   --navbar: rgb(121, 121, 121);
+  --modal-width: 300px;
 }
 
 *{

@@ -1,10 +1,10 @@
 @font-face {
     font-family: "flaticon";
-    src: url("./flaticon.ttf?b38e1b09ccbcf1a701edadaa85619d5b") format("truetype"),
-url("./flaticon.woff?b38e1b09ccbcf1a701edadaa85619d5b") format("woff"),
-url("./flaticon.woff2?b38e1b09ccbcf1a701edadaa85619d5b") format("woff2"),
-url("./flaticon.eot?b38e1b09ccbcf1a701edadaa85619d5b#iefix") format("embedded-opentype"),
-url("./flaticon.svg?b38e1b09ccbcf1a701edadaa85619d5b#flaticon") format("svg");
+    src: url("./flaticon.ttf?cac266b289d868d88d7b035ef6076d47") format("truetype"),
+url("./flaticon.woff?cac266b289d868d88d7b035ef6076d47") format("woff"),
+url("./flaticon.woff2?cac266b289d868d88d7b035ef6076d47") format("woff2"),
+url("./flaticon.eot?cac266b289d868d88d7b035ef6076d47#iefix") format("embedded-opentype"),
+url("./flaticon.svg?cac266b289d868d88d7b035ef6076d47#flaticon") format("svg");
 }
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
@@ -18,12 +18,18 @@ i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.flaticon-close:before {
+.flaticon-shopping-bags:before {
     content: "\f101";
 }
-.flaticon-shopping-cart:before {
+.flaticon-close:before {
     content: "\f102";
 }
-.flaticon-magnifying-glass:before {
+.flaticon-shopping-cart:before {
     content: "\f103";
+}
+.flaticon-magnifying-glass:before {
+    content: "\f104";
+}
+.flaticon-delete:before {
+    content: "\f105";
 }
