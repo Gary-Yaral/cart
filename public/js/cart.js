@@ -3,10 +3,13 @@ const cartModal = document.querySelector('#cart-modal');
 const cartContainer = document.querySelector('#cart-render')
 const buttonsContainer = document.querySelector('#cart-btn-container');
 const totalContainer = document.querySelector('#cart-total');
+let hamburguer = document.getElementById("bar");
+let categoryWindow = document.getElementById('category-modal');
 
-
-cartBtn.addEventListener('click', () => {
+cartBtn.addEventListener('click', () => {  
     cartModal.classList.toggle('modal-hidden');
+    hamburguer.classList.remove('active');
+    categoryWindow.classList.add('category-hidden');
     renderCart();
 })
 

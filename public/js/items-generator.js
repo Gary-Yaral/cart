@@ -87,6 +87,7 @@ const container = document.querySelector('#container');
 window.addEventListener('DOMContentLoaded', () => {
     new Section(object,container).new();
     createSession();
+    renderCategories();
 })
 
 /* Object section*/
@@ -100,9 +101,10 @@ class Section{
         
         this.object.forEach(block => {
             const sectionContainer = document.createElement('div');
-            sectionContainer.setAttribute('id','section_'+block.category)
+            sectionContainer.setAttribute('id','section_'+block.category);
+            sectionContainer.classList.add('scroll-top');
             const sectionTitleContainer = document.createElement('div');
-            sectionTitleContainer.classList.add('title');
+            sectionTitleContainer.classList.add('title');         
             const itemsContainer = document.createElement('div');
             itemsContainer.classList.add('items')
             const sectionTitle = document.createElement('div');
@@ -120,13 +122,28 @@ class Section{
         block.items.forEach(item => {
             const itemCard = document.createElement('div');
             const img = document.createElement('img');
+            const title = document.createElement('div');
+            const priceContainer = document.createElement('div');
+            const label = document.createElement('div');
+            const price = document.createElement('div');
             const btn = document.createElement('div');
+            title.innerHTML = item.name;
+            label.innerHTML = "Precio: ";
+            price.innerHTML = "$"+item.price.toFixed(2);
+            price.classList.add('price');
+            title.classList.add('item-title');
+            priceContainer.classList.add('item-price');
+
             btn.classList.add('btn');
             btn.innerHTML = 'Añadir'
             img.src = item.src;
+            priceContainer.appendChild(label);
+            priceContainer.appendChild(price);
             itemCard.classList.add('item');
             itemCard.setAttribute('id',item.id);
             itemCard.appendChild(img);
+            itemCard.appendChild(title);
+            itemCard.appendChild(priceContainer);
             itemCard.appendChild(btn)
             itemsContainer.appendChild(itemCard);
         })
@@ -172,3 +189,17 @@ const countItemsStorage=(exists, session)=>{
     counter.innerHTML=countItemsStorage(exists,session)
   }
   
+
+  const renderCategories = () =>{
+    const ul = document.querySelector('#category-list');
+    object.forEach(array => {
+        let li = document.createElement('li');
+        li.classList.add('category-li');
+        let link = document.createElement('a');
+        link.classList.add('category-a');
+        link.setAttribute('href','#section_'+array.category);
+        link.innerHTML = array.category;
+        li.appendChild(link);
+        ul.append(li);
+    })
+  }
