@@ -9,6 +9,7 @@
   --shadow:rgb(177, 169, 177);
   --navbar: rgb(121, 121, 121);
   --modal-width: 300px;
+  --dark: rgba(0, 0, 0, 0.801);
 }
 
 *{
