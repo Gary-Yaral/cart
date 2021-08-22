@@ -6,25 +6,29 @@ const object =[
                 id:1,
                 name: 'Coca Cola',
                 price: 0.50,
-                src: 'assets/coca_cola.jpg'
+                src: 'assets/coca_cola.jpg',
+                description: "Bebida gaseosa fabricado por 'The Coca Cola Company'"
             },
             {
                 id:2,
                 name: 'Pepsi',
                 price: 0.60,
-                src: 'assets/pepsi_cola.webp'
+                src: 'assets/pepsi_cola.webp',
+                description: "Bebida gaseosa fabricado por 'The Coca Cola Company'"
             },
             {
                 id:3,
                 name: 'Inca Cola',
                 price: 0.50,
-                src: 'assets/inca_cola.jpg'
+                src: 'assets/inca_cola.jpg',
+                description: "Bebida gaseosa fabricado por 'The Coca Cola Company'"
             },
             {
                 id:4,
                 name: 'Fanta',
                 price: 0.55,
-                src: 'assets/fanta_cola.jpg'
+                src: 'assets/fanta_cola.jpg',
+                description: "Bebida gaseosa fabricado por 'The Coca Cola Company'"
             }
         ]
     },
@@ -35,25 +39,29 @@ const object =[
                 id:5,
                 name: 'Ron Fiesta',
                 price: 5.00,
-                src: 'assets/ron_barcelo.jpg'
+                src: 'assets/ron_barcelo.jpg',
+                description: "Bebida alcoholica con 40 grados de alcohol"
             },
             {
                 id:6,
                 name: 'Vino tinto',
                 price: 5.50,
-                src:'assets/vino_tinto.jpg'
+                src:'assets/vino_tinto.jpg',
+                description: "Bebida alcoholica con 25 grados de alcohol"
             },
             {
                 id:7,
                 name: 'Ron',
                 price: 4.50,
-                src:'assets/ron_cartavio.jpg'
+                src:'assets/ron_cartavio.jpg',
+                description: "Bebida alcoholica con 40 grados de alcohol"
             },
             {
                 id:8,
                 name: 'Cerveza en lata',
                 price: 1.35,
-                src:'assets/cerveza_lata.jpg'
+                src:'assets/cerveza_lata.jpg',
+                description: "Bebida alcoholica con 5 grados de alcohol"
             }
         ]
     },
@@ -64,18 +72,21 @@ const object =[
                 id:9,
                 name: 'Zuck',
                 price: 0.40,
-                src: 'assets/suck.jpg'
+                src: 'assets/suck.jpg',
+                description: "Cereal crocante de 500 gramos"
             },
             {
                 id:10,
                 name: 'Avena 1kg',
                 price: 0.80,
-                src:'assets/avena.jpg'
+                src:'assets/avena.jpg',
+                description: "Paquete de de avena entera de 1kg"
             },{
                 id:11,
                 name: 'Arroz 1kg',
                 price: 0.70,
-                src:'assets/arroz.jpg'
+                src:'assets/arroz.jpg',
+                description: "Arroz flor integral, funda de 1kg"
             }
         ]
     },
@@ -84,6 +95,7 @@ const object =[
 
 
 const container = document.querySelector('#container');
+
 window.addEventListener('DOMContentLoaded', () => {
     new Section(object,container).new();
     createSession();
@@ -130,9 +142,11 @@ class Section{
             title.innerHTML = item.name;
             label.innerHTML = "Precio: ";
             price.innerHTML = "$"+item.price.toFixed(2);
-            price.classList.add('price');
+            price.classList.add('item-price');
+            img.classList.add('item-img');
+            label.classList.add('item-label');
             title.classList.add('item-title');
-            priceContainer.classList.add('item-price');
+            priceContainer.classList.add('price-container');
 
             btn.classList.add('btn');
             btn.innerHTML = 'Añadir'

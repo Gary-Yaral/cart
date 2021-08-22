@@ -230,7 +230,7 @@ input[type="number"]::-webkit-inner-spin-button{
     font-weight:bold;
 }
 
-.item-price{
+.price-container{
     width:70%;
     display:flex;
     justify-content: left;
@@ -308,20 +308,25 @@ input[type="number"]::-webkit-inner-spin-button{
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: var(--white);
+    background: #fff;
     height: auto;
-    position: absolute;
+    position: relative;
 }
 
 .close-info{
     position: absolute;
-    width:1.5rem;
-    height:1.5rem;
+    width:2rem;
+    height:2rem;
     cursor:pointer;
-    margin-top:0;
-    margin-left:0;
+    top:0px;
+    right:0px;
+    justify-content: center;
+    align-items:center;
     display: flex;
     z-index:10;
+    border:none;
+    background:none;
+    font-size:1rem;
 }
 
 .image-info{
@@ -329,6 +334,73 @@ input[type="number"]::-webkit-inner-spin-button{
     height:100%;
     display:flex;
 }
+
+.info-container{
+    display:flex;
+    flex-direction:column;
+}
+
+.info-title{
+    margin-top: 1rem;
+    font-size:1.5rem;
+}
+
+.info-code{
+    display:flex;
+    margin-top:1rem;
+    width:80%;
+}
+
+.info-description{
+    display:flex;
+    margin-top:1rem;
+    width:90%;
+}
+
+.info-price{
+    display:flex;
+    margin-top:1rem;
+}
+
+@media screen and (max-width: 600px) {
+    .info-card{
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr;
+        background: #fff;
+        height: auto;
+        position: relative;
+        
+    }
+
+    .info-title{
+        margin-top: 1rem;
+        font-size:1.5rem;
+        margin-left: 1rem;
+    }
+    
+    .info-code{
+        display:flex;
+        margin-top:1rem;
+        width:80%;
+        margin-left: 1rem;
+    }
+    
+    .info-description{
+        display:flex;
+        margin-top:1rem;
+        width:90%;
+        margin-left: 1rem;
+    }
+    
+    .info-price{
+        display:flex;
+        margin-top:1rem;
+        margin-left: 1rem;
+        margin-bottom:1rem;
+    }
+}
+
 
 @media screen and (max-width: 360px) {
     :root{--modal-width: 100%;}
