@@ -288,7 +288,47 @@ input[type="number"]::-webkit-inner-spin-button{
     color:black;
 }
 
+.information{
+    width: 100%;
+    height:100vh;
+    position:fixed;
+    background: var(--dark);
+    z-index:1100;
+    overflow: auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.info-hidden{
+    display:none;
+}
+
+.info-card{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--white);
+    height: auto;
+    position: absolute;
+}
+
+.close-info{
+    position: absolute;
+    width:1.5rem;
+    height:1.5rem;
+    cursor:pointer;
+    margin-top:0;
+    margin-left:0;
+    display: flex;
+    z-index:10;
+}
+
+.image-info{
+    width:100%;
+    height:100%;
+    display:flex;
+}
 
 @media screen and (max-width: 360px) {
     :root{--modal-width: 100%;}
