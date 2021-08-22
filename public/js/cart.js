@@ -72,7 +72,35 @@ class Cart {
         const buttonsContainer = this.buttonsContainer;
         buttonsContainer.innerHTML= `
             <div class="btn-clear">Vaciar</div>
-            <div class="btn-next">Pedir</div>`;
+            <div class="btn-next">Siguiente</div>`;
+            let sendCart = document.querySelector('.btn-next');
+        sendCart.addEventListener('click', () => {
+            
+            const session = JSON.parse(localStorage.getItem('cart'));
+            let total = 0;
+            let string = "*Detalle de pedido*%0A%0A";
+            session.forEach(cartItem => {
+                object.forEach(item => {
+                    item.items.forEach(element => {
+                       if(cartItem.id === element.id.toString()){
+                           let amount = (cartItem.counter * element.price);
+                           let line ="* " + cartItem.counter+" x "+ element.name+"%20$"+ amount.toFixed(2)+"%0A";
+                           string += line;
+                           total += amount;
+                       }
+                    })
+                })
+            })
+
+            string += "%0A*Total:* " + "$"+total.toFixed(2)+"%0A";
+            string += "%0A*Detalle de entrega*%0A";
+            string += "- *Cliente:* Your Name%0A";
+            string += "- *Celular:* 0999999999%0A";
+            string += "- *Dirección:* Vía Universitaria";
+            localStorage.setItem('token','activated');
+            window.location = "https://api.whatsapp.com/send?phone=593982055157&text="+string;
+        })
+
     }
     addTotal(){ 
         const totalContainer = this.totalContainer;

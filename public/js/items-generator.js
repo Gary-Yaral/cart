@@ -97,6 +97,7 @@ const object =[
 const container = document.querySelector('#container');
 
 window.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('token')) {localStorage.clear()}
     new Section(object,container).new();
     createSession();
     renderCategories();
